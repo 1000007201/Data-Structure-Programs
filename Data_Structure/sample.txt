@@ -1,0 +1,1 @@
+ Linked list is a data structure similar to array in a sense that it stores bunch of items 
