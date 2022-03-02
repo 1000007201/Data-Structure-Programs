@@ -35,7 +35,7 @@ class LinkedList:
             return
         temp = self.head
         while temp:
-            print(temp.data)
+            print(f"{temp.data}-->",end=' ')
             temp = temp.next
 
     def is_present(self, data):
@@ -57,13 +57,35 @@ class LinkedList:
         else:
             print(f"{data} is not present")
 
+    def add_num_to_sorted(self, number):
+        temp = self.head
+        if temp.data >= number:
+            self.insert_at_beg(number)
+            return
+        while temp.next:
+            if temp.next.data >= number:
+                node = Node(number, temp.next)
+                temp.next = node
+                return
+            temp = temp.next
+        if temp.next is None:
+            self.insert_at_end(number)
+
     def to_string(self):
         temp = self.head
         string_ = " "
-        while temp:
-            string_ += temp.data + " "
-            temp = temp.next
-        return string_
+        if isinstance(temp.data, int):
+            while temp:
+                string_ += f"{temp.data} "
+                temp = temp.next
+            return string_
+        else:
+            while temp:
+                string_ += temp.data + " "
+                temp = temp.next
+            return string_
+
+
 
     def length(self):
         count = 0
